@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stringhe1</title>
+</head>
+<body>
+    
+
+<!-- tabella  -->
+<table>
+    <tr>
+        <td>utente</td>
+        <td><input type="text" id='user' placeholder='inserisci utente'></td>
+    </tr>
+    <tr>
+        <td>password</td>
+        <td><input type="text" id='password'  placeholder='inserisci password'></td>
+    </tr>
+
+</table>
+
+<input type="submit" id='submit' value='OK'>
+
+
+
+
+<!-- libreria jquery -->
+<script type="text/javascript" src="jquery-3.5.1.min.js"></script>
+
+
+
+
+
+<!-- script per tabella -->
+<script type="text/javascript">
+
+    function checkUser() 
+    { 
+        
+        lista_user = new Array ("pippo", "pluto", "paperino");
+
+        var utente = $("#user").val();
+
+        utenteTrovato=false;
+        for (i=0; i<lista_user.length; i++)
+
+          if (lista_user[i] === utente) {
+              utenteTrovato = true;
+              break;
+          }
+          
+          if (utenteTrovato) {
+            $("#user").val( utente.toUpperCase() ).css({"background" : "green", "color" : "white"});
+            // $("#user").val( utente.toUpperCase() ).css("background" , "green").css("color","white");
+            alert("UTENTE TROVATO !") ;
+            
+          }
+
+          else
+
+          {
+
+            alert("UTENTE NON TROVATO !") ;
+            $("#user").val( utente.toUpperCase() ).css({"background" : "red", "color" : "white"});
+
+          }
+        
+    }
+
+    function checkPassword() 
+    { 
+        var password = $("#password").val();
+        // $("#password").val( password.toUpperCase() ).css("background" , "green").css("color","white");
+        $("#password").val( password.toUpperCase() ).css({"background" : "green" , "color" : "white"});
+    }
+
+
+    function confermaDati()
+    {
+        // var dati = "Utente: " + utente + " Password: " + password; 
+        var utente = $("#user").val();
+        var password = $("#password").val();
+
+
+        var dati = "UTENTE: " + utente + " PASSWORD: " + password ;
+
+        console.log(dati);
+        alert(dati);
+
+    }
+
+    $("#user").blur(checkUser);
+    $("#password").blur(checkPassword);
+
+    $("#submit").click(confermaDati);
+
+
+</script>
+
+
+
+
+</body>
+</html>
